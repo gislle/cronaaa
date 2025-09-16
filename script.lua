@@ -1,29 +1,16 @@
--- real_script.lua
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 
-local Window = Rayfield:CreateWindow("Twin's Ink Hacks", "Teleport & Speed")
+local Window = Rayfield:CreateWindow("Universal Speed Hack", "By Twin")
 
-local Tab = Window:CreateTab("Movement")
+local Tab = Window:CreateTab("Main")
 
--- Teleport to Position
-Tab:CreateButton({
-    Name = "Teleport to Goal",
-    Callback = function()
-        local goal = workspace:FindFirstChild("Goal") or workspace:FindFirstChild("Finish") -- Change to your target part name
-        if goal and game.Players.LocalPlayer.Character then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = goal.CFrame
-        end
-    end,
-})
-
--- Speed Hack
+-- Speed Slider
 Tab:CreateSlider({
-    Name = "Speed Hack",
+    Name = "WalkSpeed",
     Range = {16, 500},
-    Increment = 10,
+    Increment = 1,
     Suffix = " studs/s",
     CurrentValue = 16,
-    Flag = "SpeedHack",
     Callback = function(Value)
         if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
             game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
@@ -31,22 +18,38 @@ Tab:CreateSlider({
     end,
 })
 
--- Auto-Teleport Loop (for grinding or escaping)
+-- JumpPower Slider (Bonus)
+Tab:CreateSlider({
+    Name = "JumpPower",
+    Range = {50, 500},
+    Increment = 1,
+    Suffix = " power",
+    CurrentValue = 50,
+    Callback = function(Value)
+        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+        end
+    end,
+})
+
+-- Toggle for Auto-Sprint (Optional)
 Tab:CreateToggle({
-    Name = "Loop Teleport to Position",
+    Name = "Auto Sprint",
     CurrentValue = false,
-    Flag = "AutoTP",
     Callback = function(Value)
         if Value then
-            _G.AutoTP = true
-            while _G.AutoTP and task.wait(1) do
-                local target = workspace:FindFirstChild("SafeSpot") -- Change to your desired part name
-                if target and game.Players.LocalPlayer.Character then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = target.CFrame
+            _G.Sprint = true
+            while _G.Sprint and task.wait() do
+                if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100 -- Set sprint speed
                 end
             end
         else
-            _G.AutoTP = false
+            _G.Sprint = false
+            -- Reset to normal speed if needed
+            if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+            end
         end
     end,
 })
