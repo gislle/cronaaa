@@ -35,3 +35,4 @@ Player.CharacterAdded:Connect(function(newCharacter)
     -- Apply the last chosen speed to the new character
     applySpeed(currentSpeed)
 end)
+
