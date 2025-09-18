@@ -249,18 +249,6 @@ function library:CreateWindow(name, version, icon)
 		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Right
 		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
-		--LATER
-		--[[PageButton.Name = "PageButton"
-		PageButton.Parent = Tabs
-		PageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		PageButton.BackgroundTransparency = 1.000
-		PageButton.Size = UDim2.new(1, -14, 0, 20)
-		PageButton.Font = Enum.Font.Gotham
-		PageButton.Text = "Page 1"
-		PageButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-		PageButton.TextSize = 12.000
-		PageButton.TextXAlignment = Enum.TextXAlignment.Left]]
-
 		Indicator.Name = "Indicator"
 		Indicator.Parent = Tabs
 		Indicator.BackgroundColor3 = Color3.fromRGB(135, 255, 135)
@@ -269,11 +257,11 @@ function library:CreateWindow(name, version, icon)
 		Indicator.Position = UDim2.new(0, -14, 0, 4)
 		Indicator.Size = UDim2.new(0, 2, 1, -8)
 		Indicator.Visible = false
-		--end
+		
 		local mytabbuttons = {}
 		function mytabbuttons:CreateFrame(name)
 			name = name or "Page 1"
-			--Creating Page
+			
 
 			local Page = Instance.new("ScrollingFrame")
 			local UICorner_3 = Instance.new("UICorner")
@@ -485,28 +473,6 @@ function library:CreateWindow(name, version, icon)
 					size = size + 47
 				end
 				Section.Size = UDim2.new(1,0,0,size)
-				--[[for i,v in pairs(SectionContainer:GetChildren()) do
-					if v:IsA("Frame") and v.Name == "Toggle" then
-						print(v.Name)
-						size = size + 46
-					elseif v:IsA("Frame") and v.Name == "Button" then
-						print(v.Name)
-						size = size + 46
-					elseif v:IsA("Frame") and v.Name == "Label" then
-						print(v.Name)
-						size = size + 46
-					elseif v:IsA("Frame") and v.Name == "Slider" then
-						print(v.Name)
-						size = size + 46
-					elseif v:IsA("Frame") and v.Name == "TextBox" then
-						print(v.Name)
-						size = size + 46
-					elseif v:IsA("Frame") and v.Name == "Keybind" then
-						print(v.Name)
-						size = size + 46
-					end
-					Section.Size = UDim2.new(1,0,0,size)
-				end]]
 			end)
 
 			local PageButton = Instance.new("TextButton")
@@ -1457,10 +1423,6 @@ function library:CreateWindow(name, version, icon)
 					local darknessXPos = (darknessSliderX - darknessMinXPos) / darknessXPixelSize
 
 
-					--local darkness = returnColour(darknessXPos, darknessGradientFrame.DarknessGradient.Color.Keypoints)
-					--local darknessR, darknessG, darknessB = 255 - math.floor(darkness.R * 255), 255 - math.floor(darkness.G * 255), 255 - math.floor(darkness.B * 255)
-
-
 					local colour = returnColour(colourXPos, colourGradientFrame.ColourGradient.Color.Keypoints)
 					local colourR, colourG, colourB = math.floor(colour.R * 255), math.floor(colour.G * 255), math.floor(colour.B * 255)
 
@@ -1776,3 +1738,4 @@ Player.CharacterAdded:Connect(function(newCharacter)
 end)
 
 applySpeed(16)
+
